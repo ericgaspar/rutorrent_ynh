@@ -4,20 +4,17 @@ packaging_format = 2
 
 id = "rutorrent"
 name = "ruTorrent"
-description.en = "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)"
-description.fr = "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+description.en = "Web front-end for rTorrent"
+description.fr = "Interface web frontale pour rTorrent"
 
 version = "5.3.5~ynh1"
 
 maintainers = ["eric_G"]
 
 [upstream]
-license = "free" # you can see the available licenses identifiers list here: https://spdx.org/licenses/
-website = "https://example.com"
-demo = "https://demo.example.com"
+license = "free"
 admindoc = "https://doc.yunohost.org/dev/packaging/"
-userdoc = "https://yunohost.org/apps"
-code = "https://some.forge.com/example/example"
+code = "https://github.com/Novik/ruTorrent"
 
 [integration]
 yunohost = ">= 12.1.40"
@@ -44,16 +41,6 @@ ram.runtime = "50M"
     type = "group"
     default = "visitors"
 
-    [install.admin]
-    type = "user"
-
-    [install.password]
-    # this is a generic question - ask strings are automatically handled by YunoHost's core
-    # Note that user-provided passwords questions are not automatically saved as setting
-    help.en = "Use the help field to add an information for the admin about this question."
-    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-    type = "password"
-
 [resources]
 
     [resources.sources]
@@ -67,14 +54,13 @@ ram.runtime = "50M"
     [resources.system_user]
 
     [resources.install_dir]
-
-    [resources.data_dir]
+    group = "www-data:r-x"
 
     [resources.permissions]
     main.url = "/"
 
     [resources.ports]
+    main.default = 5000
 
     [resources.apt]
     packages = "php8.5-simplexml, php8.5-curl, php8.5-mbstring, php8.5-zlib "
-
